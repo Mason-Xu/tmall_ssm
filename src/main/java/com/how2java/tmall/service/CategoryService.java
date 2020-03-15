@@ -1,12 +1,13 @@
 package com.how2java.tmall.service;
 
-import com.how2java.tmall.pojo.Category;
-import com.how2java.tmall.util.Page;
+        import com.how2java.tmall.pojo.Category;
+        import com.how2java.tmall.util.Page;
+        import java.util.List;
 
-import java.util.List;
-
-public interface CategoryService {
+public interface CategoryService{
     int total();
-
     List<Category> list(Page page);
+
+    void add(Category category);
+
 }
