@@ -63,7 +63,7 @@ public class CategoryController {
         Category c = categoryService.get(id);
         model.addAttribute("c", c);
 //        返回editCategory.jsp
-        return "admin/editCategory";
+        return "admin/editCategory";//返回editCategory.jsp
     }
 
     @RequestMapping("admin_category_update")
