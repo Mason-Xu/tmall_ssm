@@ -36,9 +36,9 @@ public class CategoryController {
     @RequestMapping("admin_category_add")
     public String add(Category c, HttpSession session, UploadedImageFile uploadedImageFile) throws IOException {
         categoryService.add(c);
-        File  imageFolder= new File(session.getServletContext().getRealPath("img/category"));
-        File file = new File(imageFolder,c.getId()+".jpg");
-        if(!file.getParentFile().exists())
+        File imageFolder = new File(session.getServletContext().getRealPath("img/category"));
+        File file = new File(imageFolder, c.getId() + ".jpg");
+        if (!file.getParentFile().exists())
             file.getParentFile().mkdirs();
         uploadedImageFile.getImage().transferTo(file);
         BufferedImage img = ImageUtil.change2jpg(file);
@@ -46,4 +46,14 @@ public class CategoryController {
         return "redirect:/admin_category_list";
     }
 
+    @RequestMapping("admin_category_delete")
+    public String delete(int id, HttpSession session) throws IOException {
+        categoryService.delete(id);
+
+        File imageFolder = new File(session.getServletContext().getRealPath("img/category"));
+        File file = new File(imageFolder, id + ".jpg");
+        file.delete();
+
+        return "redirect:/admin_category_list";
+    }
 }
