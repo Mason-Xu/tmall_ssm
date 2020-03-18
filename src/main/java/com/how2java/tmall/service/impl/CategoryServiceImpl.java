@@ -16,6 +16,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public List<Category> list() {
+        //传递一个example对象，这个对象指定按照id倒排序来查询
         CategoryExample example = new CategoryExample();
         example.setOrderByClause("id desc");
         return categoryMapper.selectByExample(example);

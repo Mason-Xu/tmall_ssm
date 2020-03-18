@@ -2,7 +2,6 @@ package com.how2java.tmall.mapper;
 
 import com.how2java.tmall.pojo.Category;
 import com.how2java.tmall.pojo.CategoryExample;
-
 import java.util.List;
 
 public interface CategoryMapper {
@@ -16,7 +15,7 @@ public interface CategoryMapper {
 
     Category selectByPrimaryKey(Integer id);
 
-    int upedateByPrimaryKeySelctive(Category record);
+    int updateByPrimaryKeySelective(Category record);
 
     int updateByPrimaryKey(Category record);
 }
