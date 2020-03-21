@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Ma5on
-  Date: 2020/3/17
-  Time: 12:07
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" import="java.util.*" %>
 
@@ -12,7 +5,9 @@
 <%@include file="../include/admin/adminHeader.jsp" %>
 <%@include file="../include/admin/adminNavigator.jsp" %>
 
+
 <title>编辑分类</title>
+
 
 <script>
     $(function () {
@@ -37,9 +32,6 @@
     <div class="panel panel-warning editDiv">
         <div class="panel-heading">编辑分类</div>
         <div class="panel-body">
-            <%--            编辑页面提交数据到admin_category_update
-            1. method="post" 用于提交中文
-            2. enctype="multipart/form-data" 用于提交二进制文件--%>
             <form method="post" id="editForm" action="admin_category_update" enctype="multipart/form-data">
                 <table class="editTable">
                     <tr>
@@ -47,7 +39,7 @@
                         <td><input id="name" name="name" value="${c.name}" type="text" class="form-control"></td>
                     </tr>
                     <tr>
-                        <td>分类图片</td>
+                        <td>分类圖片</td>
                         <td>
                             <input id="categoryPic" accept="image/*" type="file" name="image"/>
                         </td>

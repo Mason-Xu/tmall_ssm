@@ -1,5 +1,6 @@
 package com.how2java.tmall.util;
 
+
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.Configuration;
 import org.mybatis.generator.config.xml.ConfigurationParser;
@@ -11,24 +12,24 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * 运行即生成pojo.mapper和xml。
- */
+
 public class MybatisGenerator {
 
+
     public static void main(String[] args) throws Exception {
-        String today = "2020-3-18";
+        String today = "2017-10-15";
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         Date now = sdf.parse(today);
         Date d = new Date();
 
         if (d.getTime() > now.getTime() + 1000 * 60 * 60 * 24) {
-            System.err.println("——————未成成功运行——————");
-            System.err.println("——————未成成功运行——————");
+            System.err.println("――――――未成成功运行――――――");
+            System.err.println("――――――未成成功运行――――――");
             System.err.println("本程序具有破坏作用，应该只运行一次，如果必须要再运行，需要修改today变量为今天，如:" + sdf.format(new Date()));
             return;
         }
+
 
         if (false)
             return;
@@ -43,6 +44,7 @@ public class MybatisGenerator {
         myBatisGenerator.generate(null);
 
         System.out.println("生成代码成功，只能执行一次，以后执行会覆盖掉mapper,pojo,xml 等文件上做的修改");
+
 
     }
 }

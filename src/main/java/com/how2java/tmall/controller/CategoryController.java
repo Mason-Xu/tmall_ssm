@@ -28,10 +28,8 @@ public class CategoryController {
 
     @RequestMapping("admin_category_list")
     public String list(Model model, Page page) {
-        //通过分页插件指定分页参数
         PageHelper.offsetPage(page.getStart(), page.getCount());
         List<Category> cs = categoryService.list();
-        //通过PageInfo获取总数
         int total = (int) new PageInfo<>(cs).getTotal();
         page.setTotal(total);
         model.addAttribute("cs", cs);
@@ -67,13 +65,12 @@ public class CategoryController {
     public String edit(int id, Model model) throws IOException {
         Category c = categoryService.get(id);
         model.addAttribute("c", c);
-//        返回editCategory.jsp
-        return "admin/editCategory";//返回editCategory.jsp
+        return "admin/editCategory";
     }
 
     @RequestMapping("admin_category_update")
     public String update(Category c, HttpSession session, UploadedImageFile uploadedImageFile) throws IOException {
-        categoryService.update(c);//通过categoryService更新c对象
+        categoryService.update(c);
         MultipartFile image = uploadedImageFile.getImage();
         if (null != image && !image.isEmpty()) {
             File imageFolder = new File(session.getServletContext().getRealPath("img/category"));
@@ -82,6 +79,7 @@ public class CategoryController {
             BufferedImage img = ImageUtil.change2jpg(file);
             ImageIO.write(img, "jpg", file);
         }
-        return "redirect:/admin_category_list";//重定向
+        return "redirect:/admin_category_list";
     }
+
 }
