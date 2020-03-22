@@ -63,7 +63,7 @@ $(function(){
 			if(confirmDelete)
 				return true;
 			return false;
-			
+
 		}
 	});
 })
