@@ -4,7 +4,9 @@ import com.how2java.tmall.mapper.ProductMapper;
 import com.how2java.tmall.pojo.Category;
 import com.how2java.tmall.pojo.Product;
 import com.how2java.tmall.pojo.ProductExample;
+import com.how2java.tmall.pojo.ProductImage;
 import com.how2java.tmall.service.CategoryService;
+import com.how2java.tmall.service.ProductImageService;
 import com.how2java.tmall.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +19,8 @@ public class ProductServiceImpl implements ProductService {
     ProductMapper productMapper;
     @Autowired
     CategoryService categoryService;
+    @Autowired
+    ProductImageService productImageService;
 
 
     @Override
@@ -43,13 +47,13 @@ public class ProductServiceImpl implements ProductService {
     }
 
 
-    private void setCategory(List<Product> ps) {
+    public void setCategory(List<Product> ps) {
         for (Product p : ps) {
             setCategory(p);
         }
     }
 
-    private void setCategory(Product p) {
+    public void setCategory(Product p) {
         int cid = p.getCid();
         Category c = categoryService.get(cid);
         p.setCategory(c);
@@ -62,6 +66,26 @@ public class ProductServiceImpl implements ProductService {
         example.setOrderByClause("id desc");
         List result = productMapper.selectByExample(example);
         setCategory(result);
+        setFirstProductImage(result);
         return result;
+    }
+
+    //增加方法 setFirstProductImage(Product p)：
+    //根据pid和图片类型查询出所有的单个图片，然后把第一个取出来放在firstProductImage上。
+    @Override
+    public void setFirstProductImage(Product p) {
+        List<ProductImage> pis = productImageService.list(p.getId(), ProductImageService.type_single);
+        if (!pis.isEmpty()) {
+            ProductImage pi = pis.get(0);
+            p.setFirstProductImage(pi);
+        }
+    }
+
+    //增加方法 setFirstProductImage(List<Product> ps)
+    //给多个产品设置图片
+    public void setFirstProductImage(List<Product> ps) {
+        for (Product p : ps) {
+            setFirstProductImage(p);
+        }
     }
 }
