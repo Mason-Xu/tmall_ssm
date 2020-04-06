@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+
 @Service
 public class OrderServiceImpl implements OrderService {
     @Autowired
@@ -20,8 +21,8 @@ public class OrderServiceImpl implements OrderService {
     UserService userService;
 
     @Override
-    public void add(Order o) {
-        orderMapper.insert(o);
+    public void add(Order c) {
+        orderMapper.insert(c);
     }
 
     @Override
@@ -30,13 +31,21 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void update(Order o) {
-        orderMapper.updateByPrimaryKeySelective(o);
+    public void update(Order c) {
+        orderMapper.updateByPrimaryKeySelective(c);
     }
 
     @Override
     public Order get(int id) {
         return orderMapper.selectByPrimaryKey(id);
+    }
+
+    public List<Order> list() {
+        OrderExample example = new OrderExample();
+        example.setOrderByClause("id desc");
+        List<Order> result = orderMapper.selectByExample(example);
+        setUser(result);
+        return result;
     }
 
     public void setUser(List<Order> os) {
@@ -50,12 +59,4 @@ public class OrderServiceImpl implements OrderService {
         o.setUser(u);
     }
 
-
-    public List<Order> list() {
-        OrderExample example = new OrderExample();
-        example.setOrderByClause("id desc");
-        List<Order> result = orderMapper.selectByExample(example);
-        setUser(result);
-        return result;
-    }
 }

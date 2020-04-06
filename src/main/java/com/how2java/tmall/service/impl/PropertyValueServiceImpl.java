@@ -14,15 +14,20 @@ import java.util.List;
 
 @Service
 public class PropertyValueServiceImpl implements PropertyValueService {
+
     @Autowired
     PropertyValueMapper propertyValueMapper;
+
 
     @Autowired
     PropertyService propertyService;
 
+
     @Override
     public void init(Product p) {
+
         List<Property> pts = propertyService.list(p.getCid());
+
         for (Property pt : pts) {
             PropertyValue pv = get(pt.getId(), p.getId());
             if (null == pv) {
@@ -32,12 +37,12 @@ public class PropertyValueServiceImpl implements PropertyValueService {
                 propertyValueMapper.insert(pv);
             }
         }
+
     }
 
     @Override
     public void update(PropertyValue pv) {
         propertyValueMapper.updateByPrimaryKeySelective(pv);
-
     }
 
     @Override
@@ -45,11 +50,9 @@ public class PropertyValueServiceImpl implements PropertyValueService {
         PropertyValueExample example = new PropertyValueExample();
         example.createCriteria().andPtidEqualTo(ptid).andPidEqualTo(pid);
         List<PropertyValue> pvs = propertyValueMapper.selectByExample(example);
-        if (pvs.isEmpty()) {
+        if (pvs.isEmpty())
             return null;
-        } else {
-            return pvs.get(0);
-        }
+        return pvs.get(0);
     }
 
     @Override

@@ -1,8 +1,8 @@
 package com.how2java.tmall.service;
 
-import com.how2java.tmall.pojo.Order;
-
 import java.util.List;
+
+import com.how2java.tmall.pojo.Order;
 
 public interface OrderService {
 
@@ -13,13 +13,12 @@ public interface OrderService {
     String finish = "finish";
     String delete = "delete";
 
-    void add(Order o);
+    void add(Order c);
 
     void delete(int id);
 
-    void update(Order o);
+    void update(Order c);
 
     Order get(int id);
-
     List list();
 }

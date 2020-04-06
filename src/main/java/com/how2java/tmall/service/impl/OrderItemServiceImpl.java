@@ -43,17 +43,6 @@ public class OrderItemServiceImpl implements OrderItemService {
     }
 
 
-    public void setProduct(List<OrderItem> ois) {
-        for (OrderItem oi : ois)
-            setProduct(oi);
-    }
-
-    public void setProduct(OrderItem oi) {
-        int pid = oi.getPid();
-        Product p = productService.get(pid);
-        oi.setProduct(p);
-    }
-
 //    OrderItemServiceImpl实现OrderItemService，提供CRUD一套方法的实现。
 //    同时还提供fill(Order order)和fill(List<Order> orders), 先说fill(Order order) :
 //    为什么要提供这个方法呢？ 因为在订单管理界面，首先是遍历多个订单，然后遍历这个订单下的多个订单项。 而由MybatisGenerator逆向工程所创建的一套自动生成代码，是不具备一对多关系的，需要自己去二次开发。 这里就是做订单与订单项的一对多关系。
@@ -98,6 +87,17 @@ public class OrderItemServiceImpl implements OrderItemService {
         o.setTotalNumber(totalNumber);
         o.setOrderItems(ois);
 
+    }
+
+    public void setProduct(List<OrderItem> ois) {
+        for (OrderItem oi : ois) {
+            setProduct(oi);
+        }
+    }
+
+    private void setProduct(OrderItem oi) {
+        Product p = productService.get(oi.getPid());
+        oi.setProduct(p);
     }
 
 }
