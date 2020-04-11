@@ -36,11 +36,11 @@ public class Category {
         this.products = products;
     }
 
-    public List<List<Product>> getProductByRow() {
+    public List<List<Product>> getProductsByRow() {
         return productsByRow;
     }
 
-    public void setProductByRow(List<List<Product>> productByRow) {
+    public void setProductsByRow(List<List<Product>> productsByRow) {
         this.productsByRow = productsByRow;
     }
 }

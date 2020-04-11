@@ -11,5 +11,5 @@
 <%@include file="../include/fore/header.jsp" %>
 <%@include file="../include/fore/top.jsp" %>
 <%@include file="../include/fore/search.jsp" %>
-<%@include file="../include/fore/homepPage.jsp" %>
+<%@include file="../include/fore/home/homePage.jsp" %>
 <%@include file="../include/fore/footer.jsp" %>
