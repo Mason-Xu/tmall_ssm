@@ -1,9 +1,7 @@
 package com.how2java.tmall.service.impl;
 
 import com.how2java.tmall.mapper.OrderMapper;
-import com.how2java.tmall.pojo.Order;
-import com.how2java.tmall.pojo.OrderExample;
-import com.how2java.tmall.pojo.User;
+import com.how2java.tmall.pojo.*;
 import com.how2java.tmall.service.OrderService;
 import com.how2java.tmall.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,5 +56,6 @@ public class OrderServiceImpl implements OrderService {
         User u = userService.get(uid);
         o.setUser(u);
     }
+
 
 }

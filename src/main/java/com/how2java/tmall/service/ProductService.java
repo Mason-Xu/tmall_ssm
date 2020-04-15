@@ -23,4 +23,8 @@ public interface ProductService {
     void fill(Category c);
 
     void fillByRow(List<Category> cs);
+
+    void setSaleAndReviewNumber(Product p);
+
+    void setSaleAndReviewNumer(List<Product> ps);
 }
