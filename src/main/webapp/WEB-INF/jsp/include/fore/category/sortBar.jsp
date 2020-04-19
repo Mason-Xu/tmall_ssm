@@ -48,12 +48,16 @@
             <td
                     <c:if test="${'review'==param.sort_case}">class="grayColumn"</c:if> ><a
                     href="?cid=${c.id}&sort_case=review">人气<span class="glyphicon glyphicon-arrow-down"></span></a></td>
-            <td <c:if test="${'date'==param.sort_case}">class="grayColumn"</c:if>><a href="?cid=${c.id}&sort_case=date">新品<span
+            <td
+                    <c:if test="${'date'==param.sort_case}">class="grayColumn"</c:if>><a
+                    href="?cid=${c.id}&sort_case=date">新品<span
                     class="glyphicon glyphicon-arrow-down"></span></a></td>
-            <td <c:if test="${'saleCount'==sort_case}">class="grayColumn"</c:if>><a
+            <td
+                    <c:if test="${'saleCount'==sort_case}">class="grayColumn"</c:if>><a
                     href="?cid=${c.id}&sort_case=saleCount">销量<span class="glyphicon glyphicon-arrow-down"></span></a>
             </td>
-            <td <c:if test="${'price'==param.sort_case}">class="grayColumn"</c:if>><a
+            <td
+                    <c:if test="${'price'==param.sort_case}">class="grayColumn"</c:if>><a
                     href="?cid=${c.id}&sort_case=price">价格<span class="glyphicon glyphicon-resize-vertical"></span></a>
             </td>
         </tr>
