@@ -27,4 +27,6 @@ public interface ProductService {
     void setSaleAndReviewNumber(Product p);
 
     void setSaleAndReviewNumber(List<Product> ps);
+
+    List<Product> search(String keyword);
 }

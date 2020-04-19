@@ -1,5 +1,6 @@
 package com.how2java.tmall.controller;
 
+import com.github.pagehelper.PageHelper;
 import comparator.*;
 import com.how2java.tmall.pojo.*;
 import com.how2java.tmall.service.*;
@@ -155,6 +156,15 @@ public class ForeController {
         return "fore/category";
     }
 
+
+    @RequestMapping("foresearch")
+    public String search(String keyword, Model model) {
+        PageHelper.offsetPage(0, 20);
+        List<Product> ps = productService.search(keyword);
+        productService.setSaleAndReviewNumber(ps);
+        model.addAttribute("ps", ps);
+        return "fore/searchResult";
+    }
 }
 
 
