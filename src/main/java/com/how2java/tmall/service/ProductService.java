@@ -26,5 +26,5 @@ public interface ProductService {
 
     void setSaleAndReviewNumber(Product p);
 
-    void setSaleAndReviewNumer(List<Product> ps);
+    void setSaleAndReviewNumber(List<Product> ps);
 }

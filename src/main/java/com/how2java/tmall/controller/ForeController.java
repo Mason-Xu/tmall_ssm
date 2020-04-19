@@ -1,5 +1,6 @@
 package com.how2java.tmall.controller;
 
+import comparator.*;
 import com.how2java.tmall.pojo.*;
 import com.how2java.tmall.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.util.HtmlUtils;
 
 import javax.servlet.http.HttpSession;
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -118,6 +120,39 @@ public class ForeController {
         }
         session.setAttribute("user", user);
         return "success";
+    }
+
+    @RequestMapping("forecategory")
+    public String category(int cid, String sort_case, Model model) {
+        Category c = categoryService.get(cid);
+        productService.fill(c);
+        //为产品填充销量和评价数据
+        productService.setSaleAndReviewNumber(c.getProducts());
+
+        if (null != sort_case) {
+            switch (sort_case) {
+                case "review":
+                    Collections.sort(c.getProducts(), new ProductReviewComparator());
+                    break;
+                case "date":
+                    Collections.sort(c.getProducts(), new ProductDateComparator());
+                    break;
+
+                case "saleCount":
+                    Collections.sort(c.getProducts(), new ProductSaleCountComparator());
+                    break;
+
+                case "price":
+                    Collections.sort(c.getProducts(), new ProductPriceComparator());
+                    break;
+
+                case "all":
+                    Collections.sort(c.getProducts(), new ProductAllComparator());
+                    break;
+            }
+        }
+        model.addAttribute("c", c);
+        return "fore/category";
     }
 
 }

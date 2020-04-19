@@ -134,7 +134,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public void setSaleAndReviewNumer(List<Product> ps) {
+    public void setSaleAndReviewNumber(List<Product> ps) {
         for (Product p : ps) {
             setSaleAndReviewNumber(p);
         }
