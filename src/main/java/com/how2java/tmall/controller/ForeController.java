@@ -215,6 +215,7 @@ public class ForeController {
     }
 
     @RequestMapping("foreaddCart")
+    @ResponseBody
     public String addCart(int pid, int num, Model model, HttpSession session) {
         Product p = productService.get(pid);
         User user = (User) session.getAttribute("user");
@@ -238,6 +239,14 @@ public class ForeController {
             orderItemService.add(oi);
         }
         return "success";
+    }
+
+    @RequestMapping("forecart")
+    public String cart(Model model, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        List<OrderItem> ois = orderItemService.listByUser(user.getId());
+        model.addAttribute("ois", ois);
+        return "fore/cart";
     }
 
 }
