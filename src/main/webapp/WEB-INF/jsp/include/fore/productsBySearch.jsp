@@ -19,11 +19,11 @@
         <div class="productInfo">
             <span class="monthDeal ">月成交 <span class="productDealNumber">${p.saleCount}笔</span></span>
             <span class="productReview">评价<span class="productReviewNumber">${p.reviewCount}</span></span>
-            <span class="wangwang"><img src="img/site/wangwang.png"></span>
+            <span class="wangwang"><img src="img/site/wangwang.png"></span>W
         </div>
 
     </div>
-    </c:forEach>
+        </c:forEach>
     <c:if test="${empty ps}">
     <div class="noMatch">没有满足条件的产品
         <div>
