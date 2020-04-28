@@ -19,6 +19,7 @@
 
         $('#deleteConfirmModal').on('hidden.bs.modal', function (e) {
             if (deleteOrderItem) {
+                //ajax删除购物车产品
                 var page = "foredeleteOrderItem";
                 $.post(
                     page,
@@ -188,6 +189,7 @@
         $(".cartProductItemSmallSumPrice[pid=" + pid + "]").html("￥" + cartProductItemSmallSumPrice);
         calcCartSumPriceAndNumber();
 
+        // ajax改变购物车产品订单数量
         var page = "forechangeOrderItem";
         $.post(
             page,
