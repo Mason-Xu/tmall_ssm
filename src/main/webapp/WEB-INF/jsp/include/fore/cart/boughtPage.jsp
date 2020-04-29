@@ -6,6 +6,7 @@
     var deleteOrderid = 0;
 
     $(function () {
+        //订单分类
         $("a[orderStatus]").click(function () {
             var orderStatus = $(this).attr("orderStatus");
             if ('all' == orderStatus) {
