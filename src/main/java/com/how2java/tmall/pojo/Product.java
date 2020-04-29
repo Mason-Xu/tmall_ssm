@@ -20,6 +20,7 @@ public class Product {
 
     private Date createDate;
 
+
     /*非数据库字段*/
     private Category category;
 
@@ -33,13 +34,6 @@ public class Product {
 
     private int reviewCount;
 
-    public ProductImage getFirstProductImage() {
-        return firstProductImage;
-    }
-
-    public void setFirstProductImage(ProductImage firstProductImage) {
-        this.firstProductImage = firstProductImage;
-    }
 
     public Category getCategory() {
         return category;
@@ -111,6 +105,15 @@ public class Product {
 
     public void setCreateDate(Date createDate) {
         this.createDate = createDate;
+    }
+
+    public ProductImage getFirstProductImage() {
+        return firstProductImage;
+    }
+
+
+    public void setFirstProductImage(ProductImage firstProductImage) {
+        this.firstProductImage = firstProductImage;
     }
 
     public List<ProductImage> getProductSingleImages() {

@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-
 @Service
 public class ProductServiceImpl implements ProductService {
     @Autowired
@@ -24,7 +23,6 @@ public class ProductServiceImpl implements ProductService {
     OrderItemService orderItemService;
     @Autowired
     ReviewService reviewService;
-
 
     @Override
     public void add(Product p) {
@@ -41,7 +39,6 @@ public class ProductServiceImpl implements ProductService {
         productMapper.updateByPrimaryKeySelective(p);
     }
 
-    // get和list方法都会把取出来的Product对象设置上对应的category
     @Override
     public Product get(int id) {
         Product p = productMapper.selectByPrimaryKey(id);
@@ -52,9 +49,8 @@ public class ProductServiceImpl implements ProductService {
 
 
     public void setCategory(List<Product> ps) {
-        for (Product p : ps) {
+        for (Product p : ps)
             setCategory(p);
-        }
     }
 
     public void setCategory(Product p) {
@@ -69,13 +65,11 @@ public class ProductServiceImpl implements ProductService {
         example.createCriteria().andCidEqualTo(cid);
         example.setOrderByClause("id desc");
         List result = productMapper.selectByExample(example);
-        setCategory(result);
         setFirstProductImage(result);
+        setCategory(result);
         return result;
     }
 
-    //增加方法 setFirstProductImage(Product p)：
-    //根据pid和图片类型查询出所有的单个图片，然后把第一个取出来放在firstProductImage上。
     @Override
     public void setFirstProductImage(Product p) {
         List<ProductImage> pis = productImageService.list(p.getId(), ProductImageService.type_single);
@@ -85,14 +79,6 @@ public class ProductServiceImpl implements ProductService {
         }
     }
 
-    //为分类填充产品集合
-    @Override
-    public void fill(Category c) {
-        List<Product> ps = list(c.getId());
-        c.setProducts(ps);
-    }
-
-    //为多个分类添加产品集合
     @Override
     public void fill(List<Category> cs) {
         for (Category c : cs) {
@@ -100,7 +86,6 @@ public class ProductServiceImpl implements ProductService {
         }
     }
 
-    //为多个分类填充推荐分类集合,即把分类下的产品集合,按照8个为一行,拆成多行.有利于显示在页面
     @Override
     public void fillByRow(List<Category> cs) {
         int productNumberEachRow = 8;
@@ -110,26 +95,19 @@ public class ProductServiceImpl implements ProductService {
             for (int i = 0; i < products.size(); i += productNumberEachRow) {
                 int size = i + productNumberEachRow;
                 size = size > products.size() ? products.size() : size;
-                List<Product> productcOfEachRow = products.subList(i, size);
-                productsByRow.add(productcOfEachRow);
+                List<Product> productsOfEachRow = products.subList(i, size);
+                productsByRow.add(productsOfEachRow);
             }
             c.setProductsByRow(productsByRow);
-        }
-    }
-
-    //增加方法 setFirstProductImage(List<Product> ps)
-    //给多个产品设置图片
-    public void setFirstProductImage(List<Product> ps) {
-        for (Product p : ps) {
-            setFirstProductImage(p);
         }
     }
 
     @Override
     public void setSaleAndReviewNumber(Product p) {
         int saleCount = orderItemService.getSaleCount(p.getId());
-        int reviewCount = reviewService.getCount(p.getId());
         p.setSaleCount(saleCount);
+
+        int reviewCount = reviewService.getCount(p.getId());
         p.setReviewCount(reviewCount);
     }
 
@@ -149,5 +127,17 @@ public class ProductServiceImpl implements ProductService {
         setFirstProductImage(result);
         setCategory(result);
         return result;
+    }
+
+    @Override
+    public void fill(Category c) {
+        List<Product> ps = list(c.getId());
+        c.setProducts(ps);
+    }
+
+    public void setFirstProductImage(List<Product> ps) {
+        for (Product p : ps) {
+            setFirstProductImage(p);
+        }
     }
 }

@@ -5,8 +5,12 @@
 <div class="categoryPictureInProductPageDiv">
     <img class="categoryPictureInProductPage" src="img/category/${p.category.id}.jpg">
 </div>
+
 <div class="productPageDiv">
-    <%@include file="imageInfo.jsp" %>
+
+    <%@include file="imgAndInfo.jsp" %>
+
     <%@include file="productReview.jsp" %>
+
     <%@include file="productDetail.jsp" %>
 </div>

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" isELIgnored="false" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix='fmt' uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <div class="searchProducts">
 
@@ -16,14 +19,14 @@
 
         <a class="tmallLink" href="foreproduct?pid=${p.id}">天猫专卖</a>
 
-        <div class="productInfo">
+        <div class="show1 productInfo">
             <span class="monthDeal ">月成交 <span class="productDealNumber">${p.saleCount}笔</span></span>
             <span class="productReview">评价<span class="productReviewNumber">${p.reviewCount}</span></span>
-            <span class="wangwang"><img src="img/site/wangwang.png"></span>W
+            <span class="wangwang"><img src="img/site/wangwang.png"></span>
         </div>
 
     </div>
-        </c:forEach>
+    </c:forEach>
     <c:if test="${empty ps}">
     <div class="noMatch">没有满足条件的产品
         <div>

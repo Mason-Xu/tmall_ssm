@@ -43,22 +43,22 @@
     <table class="categorySortBarTable categorySortTable">
         <tr>
             <td
-                    <c:if test="${'all'==param.sort_case||empty param.sort_case}">class="grayColumn"</c:if> ><a
-                    href="?cid=${c.id}&sort_case=all">综合<span class="glyphicon glyphicon-arrow-down"></span></a></td>
+                    <c:if test="${'all'==param.sort||empty param.sort}">class="grayColumn"</c:if> ><a
+                    href="?cid=${c.id}&sort=all">综合<span class="glyphicon glyphicon-arrow-down"></span></a></td>
             <td
-                    <c:if test="${'review'==param.sort_case}">class="grayColumn"</c:if> ><a
-                    href="?cid=${c.id}&sort_case=review">人气<span class="glyphicon glyphicon-arrow-down"></span></a></td>
+                    <c:if test="${'review'==param.sort}">class="grayColumn"</c:if> ><a
+                    href="?cid=${c.id}&sort=review">人气<span class="glyphicon glyphicon-arrow-down"></span></a></td>
             <td
-                    <c:if test="${'date'==param.sort_case}">class="grayColumn"</c:if>><a
-                    href="?cid=${c.id}&sort_case=date">新品<span
+                    <c:if test="${'date'==param.sort}">class="grayColumn"</c:if>><a
+                    href="?cid=${c.id}&sort=date">新品<span
                     class="glyphicon glyphicon-arrow-down"></span></a></td>
             <td
-                    <c:if test="${'saleCount'==sort_case}">class="grayColumn"</c:if>><a
-                    href="?cid=${c.id}&sort_case=saleCount">销量<span class="glyphicon glyphicon-arrow-down"></span></a>
+                    <c:if test="${'saleCount'==sort}">class="grayColumn"</c:if>><a
+                    href="?cid=${c.id}&sort=saleCount">销量<span class="glyphicon glyphicon-arrow-down"></span></a>
             </td>
             <td
-                    <c:if test="${'price'==param.sort_case}">class="grayColumn"</c:if>><a
-                    href="?cid=${c.id}&sort_case=price">价格<span class="glyphicon glyphicon-resize-vertical"></span></a>
+                    <c:if test="${'price'==param.sort}">class="grayColumn"</c:if>><a
+                    href="?cid=${c.id}&sort=price">价格<span class="glyphicon glyphicon-resize-vertical"></span></a>
             </td>
         </tr>
     </table>
