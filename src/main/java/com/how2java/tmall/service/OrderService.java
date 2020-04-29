@@ -23,6 +23,9 @@ public interface OrderService {
     void update(Order c);
 
     Order get(int id);
+
     List list();
+
+    List list(int uid, String excludedStatus);
 
 }
